@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <section class="main">
+
+        <section class="age">
+            <label for="Day" class="label1">DAY</label>
+            <input type="number" id="Day" placeholder="DD">
+            
+
+            <label for="Day" class="label2">MONTH</label>
+            <input type="number" id="Month" placeholder="MM">
+
+            <label for="Year" class="label3">YEAR</label>
+            <input type="number" id="Year" placeholder="YYYY">
+        </section>
+
+        <section id="prompt" id="reds">
+            <p class="dayPrompt field"></p>
+            <p class="monthPrompt field"></p>
+            <p class="yearPrompt field" ></p>
+        </section>
+
+        <section class="line">
+            <hr>
+            <div class="arrow">
+                <button class="btn" id="button" value="submit"><svg xmlns="http://www.w3.org/2000/svg" width="46" height="44" viewBox="0 0 46 44"><g fill="none" stroke="#FFF" stroke-width="2"><path d="M1 22.019C8.333 21.686 23 25.616 23 44M23 44V0M45 22.019C37.667 21.686 23 25.616 23 44"/></g></svg></button>
+            </div>
+        </section>
+
+        <section class="output">
+            <div class="result1">
+                <p><span class="yy">- -</span> years</p>
+            </div>
+
+            <div class="result2">
+                <p><span class="mm">- -</span> months</p>
+            </div>
+
+            <div class="result3">
+                <p><span class="dd">- -</span> days</p>
+            </div>
+        </section>
+
+    </section>
+<script src="index.js"></script>
+</body>
+</html>
