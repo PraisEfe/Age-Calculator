@@ -2,7 +2,6 @@
 let yearInput = document.getElementById("Year");
 let monthInput = document.getElementById("Month");
 let dayInput = document.getElementById("Day");
-// let errorMessage = document.getElementById("reds");
 let submitButton = document.getElementById("button"); 
 let years = document.querySelector(".yy");
 let months = document.querySelector(".mm");
@@ -29,7 +28,7 @@ let month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
 
  submitButton.addEventListener("click", () => {
-  if(yearInput.value == 0 || yearInput.value.length > 4 || yearInput.value > currentYear || yearInput.value < 1900){
+  if(yearInput.value <= 0 || yearInput.value.length > 4 || yearInput.value > currentYear || yearInput.value < 1900){
      error3.textContent = "Must be in the past";  
      error3.style.opacity = "1";
      label3.style.color = "hsl(0, 100%, 67%)";
@@ -37,7 +36,7 @@ let month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
      yearInput.style.borderColor = "hsl(0, 100%, 67%)";   //Error prompts for the yearInput field
   }
 
-  if(monthInput.value == 0 || monthInput.value.length > 2 || monthInput.value > 12){
+  if(monthInput.value <= 0 || monthInput.value.length > 2 || monthInput.value > 12){
       error2.textContent = "Must be a valid month";
       error2.style.opacity = "1";
       label2.style.color = "hsl(0, 100%, 67%)";
@@ -45,13 +44,12 @@ let month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
       monthInput.style.borderColor = "hsl(0, 100%, 67%)"; //Error prompts for the monthInput field
   }
 
-  if((dayInput.value == 0 || dayInput.value.length > 2 || dayInput.value > 31) && (monthInput.value !== 2)){
+  if((dayInput.value <= 0 || dayInput.value.length > 2 || dayInput.value > 31) && (monthInput.value !== 2)){
      error1.textContent = "Must be a valid day";
      console.log("day");
      error1.style.opacity = "1";
      label1.style.color = "hsl(0, 100%, 67%)";           //Error prompts for the dayInput field
      dayInput.style.borderColor = "hsl(0, 100%, 67%)";
-     console.log("I")
   }
 
   if(yearInput.value.trim() == ''){
@@ -68,7 +66,7 @@ let month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
   }
 
 
-  if((monthInput.value == 4 || monthInput.value == 6 || monthInput.value == 8 || monthInput.value == 11) && dayInput.value == 31){
+  if((monthInput.value == 4 || monthInput.value == 6 || monthInput.value == 9 || monthInput.value == 11) && dayInput.value == 31){
     error1.textContent = "Must be a valid date";
     error1.style.opacity = "1";                     //Error prompt if the month 
     console.log("invalid date");
@@ -90,8 +88,7 @@ let month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
    if((monthInput.value == 2 && dayInput.value > 29 && (yearInput.value % 4 == 0)) || (monthInput.value == 2 && dayInput.value > 28 && (yearInput.value % 4 !== 0))){
     error1.textContent = "Must be a valid date";
-    error1.style.opacity = "1";                     //Error prompt is the dayInput in February is greater than 28 for a non leap year or if it is greater than 29 for a leap year
-    console.log("invalid date");
+    error1.style.opacity = "1";                     //Error prompt is the dayInput in February is greater than 28 for a non leap year or if it is greater than 29 for a leap year 
     yearInput.style.borderColor = "hsl(0, 100%, 67%)";
     dayInput.style.borderColor = "hsl(0, 100%, 67%)";
     monthInput.style.borderColor = "hsl(0, 100%, 67%)";
@@ -99,9 +96,9 @@ let month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
     label2.style.color = "hsl(0, 100%, 67%)";  
     label3.style.color = "hsl(0, 100%, 67%)";  
   }
+  // ((yearInput.value == currentYear) && ((monthInput.value > currentMonth) || (dayInput.value > currentDay)))
 
-
-  if((yearInput.value == currentYear) && ((monthInput.value > currentMonth) || (dayInput.value > currentDay))){
+  if(yearInput.value == currentYear && (monthInput.value > currentMonth || monthInput.value ==  currentMonth) && dayInput.value > currentDay){
     error1.textContent = "Must be a valid date";
     error1.style.opacity = "1";                     
     console.log("invalid date");
@@ -114,10 +111,10 @@ let month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
   }
 
     //PROMPT TO RUN THE CALCULATOR WHEN ALL ERROR PROMPT CONDITIONS ARE FALSE, I NEGATED ALL THE ABOVE CONDITIONS
-    if(!(yearInput.value == 0 || yearInput.value.length > 4 || yearInput.value > currentYear || yearInput.value < 1900) && !(monthInput.value == 0 || monthInput.value.length > 2 || monthInput.value > 12 ) &&
-    !(dayInput.value == 0 || dayInput.value.length > 2 || dayInput.value > 31) && !(yearInput.value.trim() == '') && !(monthInput.value.trim() == '') && !(dayInput.value.trim() == '') && 
-    !((monthInput.value == 4 || monthInput.value == 6 || monthInput.value == 8 || monthInput.value == 11) && dayInput.value == 31) && !((monthInput.value == 2 && dayInput.value > 29 && (yearInput.value % 4 == 0)) || (monthInput.value == 2 && dayInput.value > 28 && (yearInput.value % 4 !== 0))) &&
-    !((yearInput.value == currentYear) && ((monthInput.value > currentMonth) || (dayInput.value > currentDay)))){
+    if(!(yearInput.value <= 0 || yearInput.value.length > 4 || yearInput.value > currentYear || yearInput.value < 1900) && !(monthInput.value <= 0 || monthInput.value.length > 2 || monthInput.value > 12 ) &&
+    !(dayInput.value <= 0 || dayInput.value.length > 2 || dayInput.value > 31) && !(yearInput.value.trim() == '') && !(monthInput.value.trim() == '') && !(dayInput.value.trim() == '') && 
+    !((monthInput.value == 4 || monthInput.value == 6 || monthInput.value == 9 || monthInput.value == 11) && dayInput.value == 31) && !((monthInput.value == 2 && dayInput.value > 29 && (yearInput.value % 4 == 0)) || (monthInput.value == 2 && dayInput.value > 28 && (yearInput.value % 4 !== 0))) &&
+    !(yearInput.value == currentYear && (monthInput.value > currentMonth || monthInput.value ==  currentMonth) && dayInput.value > currentDay)){
       ageCalc();
 
     error1.style.opacity = "0";
